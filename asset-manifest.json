@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/juan-ponce-portfolio/static/css/main.5f361e03.chunk.css",
+    "main.js": "/juan-ponce-portfolio/static/js/main.881faae0.chunk.js",
+    "main.js.map": "/juan-ponce-portfolio/static/js/main.881faae0.chunk.js.map",
+    "runtime-main.js": "/juan-ponce-portfolio/static/js/runtime-main.86584b5c.js",
+    "runtime-main.js.map": "/juan-ponce-portfolio/static/js/runtime-main.86584b5c.js.map",
+    "static/js/2.3c798774.chunk.js": "/juan-ponce-portfolio/static/js/2.3c798774.chunk.js",
+    "static/js/2.3c798774.chunk.js.map": "/juan-ponce-portfolio/static/js/2.3c798774.chunk.js.map",
+    "index.html": "/juan-ponce-portfolio/index.html",
+    "precache-manifest.6767baaf7a53bfda93595a291e027456.js": "/juan-ponce-portfolio/precache-manifest.6767baaf7a53bfda93595a291e027456.js",
+    "service-worker.js": "/juan-ponce-portfolio/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/juan-ponce-portfolio/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.3c798774.chunk.js.LICENSE.txt": "/juan-ponce-portfolio/static/js/2.3c798774.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/juan-ponce-portfolio/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.86584b5c.js",
+    "static/js/2.3c798774.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.881faae0.chunk.js"
+  ]
+}
