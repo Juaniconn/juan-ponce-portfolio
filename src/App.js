@@ -1,26 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route, withRouter } from 'react-router-dom';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
+import Main from './components/pages/main'
 
-function App() {
+const myTheme = createMuiTheme({
+  typography: {
+      fontFamily: "'Lato', sans-serif" 
+  }
+})
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <MuiThemeProvider theme={myTheme}>
+      <Switch>
+        <Route exact path="/" component={Main}/>
+      </Switch>
+    </MuiThemeProvider>
+  )
 }
 
-export default App;
+export default withRouter(App)
