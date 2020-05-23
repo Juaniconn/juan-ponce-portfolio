@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Box, CardMedia, Container, makeStyles } from '@material-ui/core'
-import ImagesCarousel from './../atom/carousel'
 
 const useStyles = makeStyles((theme) => ({
     hero: {
@@ -15,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
         left: "0",
         width: "100%",
         height: "100%",
-        transition: "450ms all",
+        transition: "1000ms all",
         "&::before": {
             position: "absolute",
             content: "''",
@@ -26,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
             // background: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 10%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.9) 90%, rgba(0,0,0,1) 100%);",
             backgroundColor: "rgba(0,0,0,0.20)",
             // background: "linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0), rgba(0,0,0,1))",
-            transition: "450ms all",
+            transition: "1000ms all",
         },
     },
     heroPolygonDisabled: {
@@ -38,8 +37,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CarouselCard = ({classes, imageURL, setTime}) => {
-    const [counter, setCounter] = useState(setTime);
-    const [loop, setLoop] = useState(setTime * 2);
+    const [counter, setCounter] = useState(0);
+    const [loop, setLoop] = useState(0);
+    const DELAY = 30
 
     useEffect(() => {
         const timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
@@ -53,10 +53,8 @@ const CarouselCard = ({classes, imageURL, setTime}) => {
 
     const checkLoop = () => {
         setCounter(setTime)
-        setLoop(setTime * 2)
+        setLoop(DELAY)
     }
-    console.log(counter)
-    console.log(loop)
     return (
         <>
             {loop <= 0 ? checkLoop() : null}
@@ -68,12 +66,12 @@ const CarouselCard = ({classes, imageURL, setTime}) => {
 const CarouselWrapper = ({classes}) => {
     return(
         <>
-            {/* <CarouselCard classes={classes} setTime={30} imageURL="https://images.pexels.com/photos/3527778/pexels-photo-3527778.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/> */}
-            {/* <CarouselCard classes={classes} setTime={25} imageURL="https://images.pexels.com/photos/698319/pexels-photo-698319.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/> */}
-            {/* <CarouselCard classes={classes} setTime={20} imageURL="https://images.pexels.com/photos/1436127/pexels-photo-1436127.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/> */}
-            {/* <CarouselCard classes={classes} setTime={15} imageURL="https://images.pexels.com/photos/1510659/pexels-photo-1510659.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/> */}
-            <CarouselCard classes={classes} setTime={4} imageURL="https://images.pexels.com/photos/2694434/pexels-photo-2694434.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
-            <CarouselCard classes={classes} setTime={2} imageURL="https://images.pexels.com/photos/1050734/pexels-photo-1050734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
+            <CarouselCard classes={classes} setTime={30} imageURL="https://images.pexels.com/photos/3527778/pexels-photo-3527778.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
+            <CarouselCard classes={classes} setTime={25} imageURL="https://images.pexels.com/photos/698319/pexels-photo-698319.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
+            <CarouselCard classes={classes} setTime={20} imageURL="https://images.pexels.com/photos/1436127/pexels-photo-1436127.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
+            <CarouselCard classes={classes} setTime={15} imageURL="https://images.pexels.com/photos/1510659/pexels-photo-1510659.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
+            <CarouselCard classes={classes} setTime={10} imageURL="https://images.pexels.com/photos/2694434/pexels-photo-2694434.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
+            <CarouselCard classes={classes} setTime={5} imageURL="https://images.pexels.com/photos/1050734/pexels-photo-1050734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
         </>
     )
 }
@@ -84,8 +82,8 @@ const Hero = () => {
     return (
         <Box className={classes.hero}>
             <Container fixed>
-                {/* <CarouselWrapper classes={classes} /> */}
-                <ImagesCarousel/>
+                <CarouselWrapper classes={classes} />
+                {/* <ImagesCarousel/> */}
             </Container>
         </Box>
     )
