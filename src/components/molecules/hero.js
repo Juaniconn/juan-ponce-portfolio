@@ -33,7 +33,15 @@ const useStyles = makeStyles((theme) => ({
     },
     heroPolygonActive: {
         clipPath: "polygon(0 0,20% 0,20% 100%,40% 100%,40% 0,60% 0,60% 100%,80% 100%,80% 0,100% 0,100% 0,100% 100%,100% 0,80% 0,80% 100%,60% 100%,60% 0,40% 0,40% 100%,20% 100%,20% 0,0 0)",
-    }
+    },
+    [theme.breakpoints.down('sm')]: {
+        heroPolygonDisabled: {
+            clipPath: "polygon(0 0, 100% 0, 100% 50%, 100% 50%, 100% 100%, 0 100%, 0 50%, 0 50%)",
+        },
+        heroPolygonActive: {
+            clipPath: "polygon(100% 0, 100% 0, 100% 50%, 0 50%, 0 100%, 0 100%, 0 50%, 100% 50%)",
+        },
+    },
 }));
 
 const CarouselCard = ({classes, imageURL, setTime}) => {

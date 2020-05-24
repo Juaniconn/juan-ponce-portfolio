@@ -48,7 +48,14 @@ const useStyles = makeStyles((theme) => ({
             background: "#fff",
             margin: "0 0 0 1rem",
         }
-    }
+    },
+    [theme.breakpoints.down('sm')]: {
+        header: {
+            bottom: "2rem",
+            left: "2rem",
+            right: "2rem",
+        }, 
+    },
 }));
 
 const Main = () => {
