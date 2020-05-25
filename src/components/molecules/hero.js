@@ -29,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
         left: '0',
         right: '0',
         bottom: '0',
-        backgroundColor: "#111",
 
         "& img": {
             clipPath: "polygon(30% 0, 100% 25%, 60% 100%, 0 90%)",
@@ -129,9 +128,15 @@ const useStyles = makeStyles((theme) => ({
                 width: "110vw",
                 height: "62vh",
             },
+
+            "&:after": {
+                content: "",
+            },
         },
     },
 }));
+
+/* Carousel */
 
 // const CarouselCard = ({classes, imageURL, setTime}) => {
 //     const [counter, setCounter] = useState(0);

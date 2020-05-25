@@ -4,6 +4,7 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import YouTubeIcon from '@material-ui/icons/YouTube';
+import { useRouteMatch } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
     footer: {
@@ -26,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
         margin: '0',
+        marginBottom: '-0.75rem',
         padding: "0",
         position: "relative",
         "& li": {
@@ -49,11 +51,11 @@ const useStyles = makeStyles((theme) => ({
             margin: "0 0 0 1rem",
         }
     },
-    [theme.breakpoints.down('sm')]: {
-        footerNavListItemLabel: {
+    [theme.breakpoints.down('md')]: {
+        footerEMail: {
             display: "none",
         },
-        footerEMail: {
+        footerNavListItemLabel: {
             display: "none",
         },
         footer: {
@@ -66,11 +68,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Footer = () => {
-    const classes = useStyles();
+    const classes = useStyles()
+    let match = useRouteMatch()
     return (
         <Box className={classes.footer}>
             <Typography className={classes.footerEMail} variant="body2">E: me.juanponce@gmail.com</Typography>
-            <nav className={classes.footerNav}>
+            <nav className={match.isExact ? classes.footerNav : classes.disable}>
                 <Typography className={classes.footerNavListItemLabel} variant="body2">Follow Me</Typography>
                 <ul className={classes.footerNavListWrapper}>
                     <li><Link href="https://www.linkedin.com/in/eljuanii00/"><IconButton style={{color: '#fff'}}><LinkedInIcon/></IconButton></Link></li>

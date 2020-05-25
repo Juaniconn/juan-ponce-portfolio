@@ -37,12 +37,14 @@ const useStyles = makeStyles((theme) => ({
         display: "none",
         color: "white",
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('md')]: {
         header: {
             top: "2rem",
             left: "2rem",
             right: "2rem",
         }, 
+    },
+    [theme.breakpoints.down('xs')]: {
         headerNavListWrapper: {
             display: "none",
         },
