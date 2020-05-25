@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography, makeStyles, IconButton, Drawer, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
+import { withRouter } from 'react-router-dom'
 import MenuIcon from '@material-ui/icons/Menu'
 import CloseIcon from '@material-ui/icons/Close';
 
@@ -26,15 +27,17 @@ const useStyles = makeStyles((theme) => ({
         padding: "0",
         "& li": {
             listStyle: "none",
-            padding: "0 1rem",
+            margin: "0 1rem",
+            padding: "0",
             fontWeight: "bold",
+            cursor: "pointer",
         },
     },
     headerNavHamburgerMenu: {
         display: "none",
         color: "white",
     },
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('xs')]: {
         header: {
             top: "2rem",
             left: "2rem",
@@ -65,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Main = () => {
+const Header = (props) => {
     const classes = useStyles();
     const [state, setState] = React.useState({
         top: false,
@@ -82,7 +85,7 @@ const Main = () => {
         <div role="presentation" onClick={toggleDrawer(anchor, false)} onKeyDown={toggleDrawer(anchor, false)}>
           <List>
             {['Home', 'Resume', 'Works', 'Contact'].map((text, index) => (
-              <ListItem button key={text}>
+              <ListItem onClick={() => props.history.push(text !== 'Home' ? text.toLowerCase() : '/')} button key={text}>
                 <ListItemIcon style={{color: "white"}}>{index === 0 ? <HomeIcon /> : index === 1 ? <BusinessCenterIcon /> : index === 2 ? <BallotIcon /> : <ContactMailIcon />}</ListItemIcon>
                 <ListItemText style={{color: "white"}} primary={text} />
               </ListItem>
@@ -93,13 +96,13 @@ const Main = () => {
 
     return (
         <header className={classes.header}>
-            <Typography style={{fontWeight: '900'}} variant="subtitle1">Juan Ponce</Typography>
+            <Typography onClick={() => props.history.push('/')} style={{fontWeight: '900', cursor: 'pointer'}} variant="subtitle1">Juan Ponce</Typography>
             <nav>
                 <ul className={classes.headerNavListWrapper}>
-                    <li><Typography style={{fontWeight: 'bold'}} variant="subtitle1">Home</Typography></li>
-                    <li><Typography style={{fontWeight: 'bold'}} variant="subtitle1">Resume</Typography></li>
-                    <li><Typography style={{fontWeight: 'bold'}} variant="subtitle1">Works</Typography></li>
-                    <li><Typography style={{fontWeight: 'bold'}} variant="subtitle1">Contact</Typography></li>
+                    <li onClick={() => props.history.push('/')}><Typography style={{fontWeight: 'bold'}} variant="subtitle1">Home</Typography></li>
+                    <li onClick={() => props.history.push('/resume')}><Typography style={{fontWeight: 'bold'}} variant="subtitle1">Resume</Typography></li>
+                    <li onClick={() => props.history.push('/works')}><Typography style={{fontWeight: 'bold'}} variant="subtitle1">Works</Typography></li>
+                    <li onClick={() => props.history.push('/contact')}><Typography style={{fontWeight: 'bold'}} variant="subtitle1">Contact</Typography></li>
                 </ul>
                 {['left'].map((anchor) => (
                     <React.Fragment key={anchor}>
@@ -115,4 +118,4 @@ const Main = () => {
     )
 }
 
-export default Main
+export default withRouter(Header)

@@ -1,12 +1,12 @@
 import React from 'react';
-import { Box, Typography, makeStyles, IconButton } from '@material-ui/core'
+import { Box, Typography, makeStyles, IconButton, Link } from '@material-ui/core'
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 
 const useStyles = makeStyles((theme) => ({
-    header: {
+    footer: {
         height: "0px",
         display: "flex",
         justifyContent: "space-between",
@@ -18,11 +18,11 @@ const useStyles = makeStyles((theme) => ({
         zIndex: "1000",
         color: "#fff",
     }, 
-    headerNav: {
+    footerNav: {
         display: "flex",
         flexDirection: "column",
     },
-    headerNavListWrapper: {
+    footerNavListWrapper: {
         display: "flex",
         flexDirection: "column",
         margin: '0',
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
             listStyle: "none",
         }
     }, 
-    headerNavListItemLabel: {
+    footerNavListItemLabel: {
         display: 'flex', 
         alignItems: "center",
         transformOrigin: "100% 0",
@@ -50,30 +50,37 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     [theme.breakpoints.down('sm')]: {
-        header: {
+        footerNavListItemLabel: {
+            display: "none",
+        },
+        footerEMail: {
+            display: "none",
+        },
+        footer: {
             bottom: "2rem",
             left: "2rem",
             right: "2rem",
+            justifyContent: "flex-end",
         }, 
     },
 }));
 
-const Main = () => {
+const Footer = () => {
     const classes = useStyles();
     return (
-        <Box className={classes.header}>
-            <Typography variant="body2">E: me.juanponce@gmail.com</Typography>
-            <nav className={classes.headerNav}>
-                <Typography className={classes.headerNavListItemLabel} variant="body2">Follow Me</Typography>
-                <ul className={classes.headerNavListWrapper}>
-                    <li><IconButton style={{color: '#fff'}}><LinkedInIcon/></IconButton></li>
-                    <li><IconButton style={{color: '#fff'}}><InstagramIcon/></IconButton></li>
-                    <li><IconButton style={{color: '#fff'}}><TwitterIcon/></IconButton></li>
-                    <li><IconButton style={{color: '#fff'}}><YouTubeIcon/></IconButton></li>
+        <Box className={classes.footer}>
+            <Typography className={classes.footerEMail} variant="body2">E: me.juanponce@gmail.com</Typography>
+            <nav className={classes.footerNav}>
+                <Typography className={classes.footerNavListItemLabel} variant="body2">Follow Me</Typography>
+                <ul className={classes.footerNavListWrapper}>
+                    <li><Link href="https://www.linkedin.com/in/eljuanii00/"><IconButton style={{color: '#fff'}}><LinkedInIcon/></IconButton></Link></li>
+                    <li><Link href="https://www.instagram.com/eljuanii00/"><IconButton style={{color: '#fff'}}><InstagramIcon/></IconButton></Link></li>
+                    <li><Link href="https://twitter.com/ElJuanii00/"><IconButton style={{color: '#fff'}}><TwitterIcon/></IconButton></Link></li>
+                    <li><Link href="https://www.youtube.com/channel/UCOdGLEz1OWAHdEFdLb0lk9Q"><IconButton style={{color: '#fff'}}><YouTubeIcon/></IconButton></Link></li>
                 </ul>
             </nav>
         </Box>
     )
 }
 
-export default Main
+export default Footer
