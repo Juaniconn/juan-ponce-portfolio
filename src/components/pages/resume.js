@@ -8,6 +8,7 @@ import Services from './../molecules/services'
 import PricingTable from './../molecules/pracingTable'
 import ExpAndEdu from './../molecules/experience&Education'
 import Lenguage from './../molecules/lenguageSkills'
+import Knowledge from './../molecules/knowledge';
 
 const useStyles = makeStyles((theme) => ({
     resume: {
@@ -29,6 +30,7 @@ const Resume = () => {
                 <PricingTable />
                 <ExpAndEdu />
                 <Lenguage />
+                <Knowledge />
             </Box>
         </>
     )
