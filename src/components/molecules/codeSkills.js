@@ -1,6 +1,5 @@
 import React from 'react'
 import { Box, makeStyles, Typography, CircularProgress } from '@material-ui/core'
-import CheckIcon from '@material-ui/icons/Check';
 
 const useStyles = makeStyles((theme) => ({
     codeSkills: {

@@ -10,6 +10,7 @@ import ExpAndEdu from './../molecules/experience&Education'
 import Lenguage from './../molecules/lenguageSkills'
 import Knowledge from './../molecules/knowledge';
 import CodeSkills from './../molecules/codeSkills';
+import Quotes from './../molecules/quotes';
 
 const useStyles = makeStyles((theme) => ({
     resume: {
@@ -33,6 +34,7 @@ const Resume = () => {
                 <Lenguage />
                 <Knowledge />
                 <CodeSkills/>
+                <Quotes/>
             </Box>
         </>
     )
