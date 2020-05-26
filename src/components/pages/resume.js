@@ -4,6 +4,8 @@ import { Box, makeStyles } from '@material-ui/core'
 
 import Breadcrumbs from './../molecules/breadcrumbs'
 import Biography from './../molecules/biography'
+import Services from './../molecules/services'
+import PricingTable from './../molecules/pracingTable'
 
 const useStyles = makeStyles((theme) => ({
     resume: {
@@ -21,6 +23,8 @@ const Resume = () => {
             <Breadcrumbs />
             <Box className={classes.resume}>
                 <Biography />
+                <Services />
+                <PricingTable />
             </Box>
         </>
     )
