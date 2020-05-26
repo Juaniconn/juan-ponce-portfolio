@@ -48,8 +48,8 @@ const useStyles = makeStyles((theme) => ({
         border: '1px solid #56D8B7',
         "&:hover": {
             backgroundColor: "#56D8B7",
-            border: 'none',
             color: 'white',
+            border: '1px solid transparent',
         },
         [theme.breakpoints.down('xs')]: {
             width: '100%',
