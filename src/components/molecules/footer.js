@@ -12,12 +12,15 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         justifyContent: "space-between",
         alignItems: "flex-end",
-        position: "absolute",
+        position: "fixed",
         bottom: "3rem",
         left: "3rem",
         right: "3rem",
         zIndex: "1000",
         color: "#fff",
+        [theme.breakpoints.down('md')]: {
+            position: "absolute",
+        },
     }, 
     footerNav: {
         display: "flex",

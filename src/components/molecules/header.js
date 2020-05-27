@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Typography, makeStyles, IconButton, Drawer, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
+import useDocumentScrollThrottled from './../layout/useDocumentScrollThrottled'
 import { withRouter } from 'react-router-dom'
 import MenuIcon from '@material-ui/icons/Menu'
 import CloseIcon from '@material-ui/icons/Close';
@@ -14,14 +15,20 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        position: "absolute",
+        position: "fixed",
+        padding: "3rem",
         height: "3rem",
-        top: "3rem",
-        left: "3rem",
-        right: "3rem",
+        top: "0",
+        left: "0",
+        right: "0",
         zIndex: "1200",
         color: "white",
+        transform: "translateY(0)",
+        transition: "transform 0.3s ease"
     }, 
+    headerBackgroundShow: {
+        backgroundColor: "#111",
+    },
     headerNavListWrapper: {
         display: "flex",
         padding: "0",
@@ -37,11 +44,15 @@ const useStyles = makeStyles((theme) => ({
         display: "none",
         color: "white",
     },
+    shadow: {
+        boxShadow: '0 9px 9px -9px rgba(0, 0, 0, 1)',
+    },
+    hidden: {
+        transform: 'translateY(-100%)',
+    },
     [theme.breakpoints.down('md')]: {
         header: {
-            top: "2rem",
-            left: "2rem",
-            right: "2rem",
+            padding: "3rem 2rem"
         }, 
     },
     [theme.breakpoints.down('xs')]: {
@@ -79,6 +90,27 @@ const Header = (props) => {
         right: false,
     })
 
+    const [shouldHideHeader, setShouldHideHeader] = useState(false);
+    const [shouldShowShadow, setShouldShowShadow] = useState(false);
+
+    const MINIMUM_SCROLL = 80;
+    const TIMEOUT_DELAY = 400;
+
+    useDocumentScrollThrottled(callbackData => {
+        const { previousScrollTop, currentScrollTop } = callbackData;
+        const isScrolledDown = previousScrollTop < currentScrollTop;
+        const isMinimumScrolled = currentScrollTop > MINIMUM_SCROLL;
+
+        setShouldShowShadow(currentScrollTop > 2);
+
+        setTimeout(() => {
+        setShouldHideHeader(isScrolledDown && isMinimumScrolled);
+        }, TIMEOUT_DELAY);
+    });
+
+    const shadowStyle = shouldShowShadow ? classes.shadow : null;
+    const hiddenStyle = shouldHideHeader ? classes.hidden : null;
+
     const toggleDrawer = (anchor, open) => (event) => {
         setState({ ...state, [anchor]: open });
     }
@@ -95,9 +127,9 @@ const Header = (props) => {
           </List>
         </div>
     )
-
     return (
-        <header className={classes.header}>
+        <header className={`${classes.header} ${shadowStyle} ${hiddenStyle} ${(props.location.pathname).substr(1) === '' ? null : classes.headerBackgroundShow}`}>
+        {/* {console.log(match)} */}
             <Typography onClick={() => props.history.push('/')} style={{fontWeight: '900', cursor: 'pointer'}} variant="subtitle1">Juan Ponce</Typography>
             <nav>
                 <ul className={classes.headerNavListWrapper}>

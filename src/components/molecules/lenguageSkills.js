@@ -43,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Lenguage = (props) => {
     const classes = useStyles()
-    console.log(props.width)
     return(
         <Box className={classes.lenguage}>
             <Typography style={{color: '#fff', fontWeight: 'bolder', fontSize: '1.2rem', marginBottom: '2rem'}} variant="h6">Lenguage (Spanish - Native)</Typography>

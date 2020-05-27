@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
         gridGap: '0.25rem',
         border: "1px solid #808787", 
         padding: '2rem',
+        [theme.breakpoints.down('xs')]: {
+            textAlign: 'center',
+        },
     },
     expAndEduButtonWrapper: {
         justifySelf: 'end',
