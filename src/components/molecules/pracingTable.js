@@ -51,6 +51,11 @@ const useStyles = makeStyles((theme) => ({
             color: 'white',
             border: '1px solid transparent',
         },
+        "&.Mui-disabled": {
+            color: "rgba(86, 216, 183, 0.26)",
+            border: "none",
+            backgroundColor: "rgba(86, 216, 183, 0.12)",
+        },
         [theme.breakpoints.down('xs')]: {
             width: '100%',
         },
@@ -80,7 +85,10 @@ const PricingTable = () => {
                         <ListItem style={{padding: '0'}}><ListItemText className={classes.pricingTableContent} primary="◽ 1 Gallery Stack (10 images max)"/></ListItem>
                         <ListItem style={{padding: '0'}}><ListItemText className={classes.pricingTableContent} primary="◽ Caontact Section (Social Networks and Email Form)"/></ListItem>
                     </List>
-                    <Button className={classes.pricingTableButton} variant="contained">Buy now</Button>
+                    <Box display="flex" flexDirection="column" alignItems="center" width="100%">
+                        <Button className={classes.pricingTableButton} variant="contained" disabled>Buy now</Button>
+                        <Typography variant="overline" style={{color: "#56D8B7"}}>Not Available</Typography>
+                    </Box>
                 </Box>
                 <Box className={classes.pricingTableItem}>
                     <LanguageIcon style={{color: '#fff', fontSize: '2rem'}}></LanguageIcon>
@@ -98,7 +106,10 @@ const PricingTable = () => {
                         <ListItem style={{padding: '0'}}><ListItemText className={classes.pricingTableContent} primary="◽ 1 Gallery Stack (10 images max)"/></ListItem>
                         <ListItem style={{padding: '0'}}><ListItemText className={classes.pricingTableContent} primary="◽ Caontact Section (Social Networks and Email Form)"/></ListItem>
                     </List>
-                    <Button className={classes.pricingTableButton} variant="contained">Buy now</Button>
+                    <Box display="flex" flexDirection="column" alignItems="center" width="100%">
+                        <Button className={classes.pricingTableButton} variant="contained" disabled>Buy now</Button>
+                        <Typography variant="overline" style={{color: "#56D8B7"}}>Not Available</Typography>
+                    </Box>
                 </Box>
             </Box>
         </Box>
