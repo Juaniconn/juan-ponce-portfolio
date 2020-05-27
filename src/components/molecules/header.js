@@ -40,6 +40,14 @@ const useStyles = makeStyles((theme) => ({
             cursor: "pointer",
         },
     },
+    headerNavListItem: {
+        fontWeight: 'bold',
+        color: '#fff',
+        transition: "450ms all",
+        "&:hover": {
+            color: '#56d8b7',
+        },
+    },
     headerNavHamburgerMenu: {
         display: "none",
         color: "white",
@@ -130,13 +138,13 @@ const Header = (props) => {
     return (
         <header className={`${classes.header} ${shadowStyle} ${hiddenStyle} ${(props.location.pathname).substr(1) === '' ? null : classes.headerBackgroundShow}`}>
         {/* {console.log(match)} */}
-            <Typography onClick={() => props.history.push('/')} style={{fontWeight: '900', cursor: 'pointer'}} variant="subtitle1">Juan Ponce</Typography>
+            <Typography className={classes.headerNavListItem} onClick={() => props.history.push('/')} style={{fontWeight: '900', cursor: 'pointer'}} variant="subtitle1">Juan Ponce</Typography>
             <nav>
                 <ul className={classes.headerNavListWrapper}>
-                    <li onClick={() => props.history.push('/')}><Typography style={{fontWeight: 'bold'}} variant="subtitle1">Home</Typography></li>
-                    <li onClick={() => props.history.push('/resume')}><Typography style={{fontWeight: 'bold'}} variant="subtitle1">Resume</Typography></li>
-                    <li onClick={() => props.history.push('/works')}><Typography style={{fontWeight: 'bold'}} variant="subtitle1">Works</Typography></li>
-                    <li onClick={() => props.history.push('/contact')}><Typography style={{fontWeight: 'bold'}} variant="subtitle1">Contact</Typography></li>
+                    <li onClick={() => props.history.push('/')}><Typography className={classes.headerNavListItem} variant="subtitle1">Home</Typography></li>
+                    <li onClick={() => props.history.push('/resume')}><Typography className={classes.headerNavListItem} variant="subtitle1">Resume</Typography></li>
+                    <li onClick={() => props.history.push('/works')}><Typography className={classes.headerNavListItem} variant="subtitle1">Works</Typography></li>
+                    <li onClick={() => props.history.push('/contact')}><Typography className={classes.headerNavListItem} variant="subtitle1">Contact</Typography></li>
                 </ul>
                 {['left'].map((anchor) => (
                     <React.Fragment key={anchor}>

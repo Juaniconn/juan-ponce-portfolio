@@ -54,6 +54,13 @@ const useStyles = makeStyles((theme) => ({
             margin: "0 0 0 1rem",
         }
     },
+    footerNavListItemIcon: {
+        color: '#fff',
+        transition: "450ms all",
+        "&:hover": {
+            color: '#56d8b7',
+        },
+    },
     [theme.breakpoints.down('md')]: {
         footerEMail: {
             display: "none",
@@ -79,10 +86,10 @@ const Footer = () => {
             <nav className={match.isExact ? classes.footerNav : classes.disable}>
                 <Typography className={classes.footerNavListItemLabel} variant="body2">Follow Me</Typography>
                 <ul className={classes.footerNavListWrapper}>
-                    <li><Link href="https://www.linkedin.com/in/eljuanii00/"><IconButton style={{color: '#fff'}}><LinkedInIcon/></IconButton></Link></li>
-                    <li><Link href="https://www.instagram.com/eljuanii00/"><IconButton style={{color: '#fff'}}><InstagramIcon/></IconButton></Link></li>
-                    <li><Link href="https://twitter.com/ElJuanii00/"><IconButton style={{color: '#fff'}}><TwitterIcon/></IconButton></Link></li>
-                    <li><Link href="https://www.youtube.com/channel/UCOdGLEz1OWAHdEFdLb0lk9Q"><IconButton style={{color: '#fff'}}><YouTubeIcon/></IconButton></Link></li>
+                    <li><Link href="https://www.linkedin.com/in/eljuanii00/"><IconButton className={classes.footerNavListItemIcon}><LinkedInIcon/></IconButton></Link></li>
+                    <li><Link href="https://www.instagram.com/eljuanii00/"><IconButton className={classes.footerNavListItemIcon}><InstagramIcon/></IconButton></Link></li>
+                    <li><Link href="https://twitter.com/ElJuanii00/"><IconButton className={classes.footerNavListItemIcon}><TwitterIcon/></IconButton></Link></li>
+                    <li><Link href="https://www.youtube.com/channel/UCOdGLEz1OWAHdEFdLb0lk9Q"><IconButton className={classes.footerNavListItemIcon}><YouTubeIcon/></IconButton></Link></li>
                 </ul>
             </nav>
         </Box>
