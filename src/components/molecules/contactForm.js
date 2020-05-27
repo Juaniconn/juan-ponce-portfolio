@@ -58,6 +58,11 @@ const useStyles = makeStyles((theme) => ({
             color: 'white',
             border: '1px solid transparent',
         },
+        "&.Mui-disabled": {
+            color: "rgba(86, 216, 183, 0.26)",
+            border: "none",
+            backgroundColor: "rgba(86, 216, 183, 0.12)",
+        },
         [theme.breakpoints.down('xs')]: {
             width: '100%',
         },
@@ -83,7 +88,8 @@ const ContactInfo = () => {
                     <TextareaAutosize className={classes.contactInfoInput} rowsMin={10} id="message" aria-label="empty textarea" placeholder="Message" />
                 </FormControl>
                 <FormControl className={classes.contactFormButtonWrapper}>
-                    <Button className={classes.contactFormButtonItem} variant="contained">Send Message</Button>
+                    <Button className={classes.contactFormButtonItem} variant="contained" disabled>Send Message</Button>
+                    <Typography variant="overline" style={{color: "#56D8B7", textAlign: "center"}}>Not Available</Typography>
                 </FormControl>
             </Box>
         </Box>
