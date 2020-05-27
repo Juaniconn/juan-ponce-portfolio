@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Typography, makeStyles, IconButton, Drawer, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
-import useDocumentScrollThrottled from './../layout/useDocumentScrollThrottled'
+import useDocumentScrollThrottled from './../tools/useDocumentScrollThrottled'
 import { withRouter } from 'react-router-dom'
 import MenuIcon from '@material-ui/icons/Menu'
 import CloseIcon from '@material-ui/icons/Close';
