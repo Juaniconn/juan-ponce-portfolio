@@ -71,7 +71,7 @@ const Biography = () => {
                     <Typography className={classes.biographyTypography} variant="subtitle1" style={{color: '#fff'}}><span style={{color: "#56D8B7"}}>Residence: </span>México</Typography>
                     <Typography className={classes.biographyTypography} variant="subtitle1" style={{color: '#fff'}}><span style={{color: "#56D8B7"}}>Address: </span>Guadalajara</Typography>
                 </Box>
-                <Box className={classes.biographyButtonWrapper}><Button className={classes.biographyButtonItem} variant="contained">Download CV</Button></Box>
+                <Box className={classes.biographyButtonWrapper}><Button href="https://drive.google.com/file/d/1qWvAxIwqW2Rhftmam6dJSEJn1KOTJKe_/view?usp=sharing" className={classes.biographyButtonItem} variant="contained">Download CV</Button></Box>
             </Box>
         </Box>
     )
