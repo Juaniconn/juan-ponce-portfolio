@@ -5,15 +5,15 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import WorkIcon from '@material-ui/icons/Work';
 
 const useStyles = makeStyles((theme) => ({
-    contactInfo: {
+    contactForm: {
         margin: "5rem 0",
     },
-    contactInfoTypography: {
+    contactFormTypography: {
         [theme.breakpoints.down('xs')]: {
             textAlign: "center",
         },
     },
-    contactInfoWrapper: {
+    contactFormWrapper: {
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
         gridGap: "2rem",
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
             gridTemplateColumns: "1fr",
         },
     },
-    contactInfoItem: {
+    contactFormItem: {
         display: "flex",
         textAlign: "center",
         justifyContent: "space-evenly",
@@ -33,23 +33,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const ContactInfo = () => {
+const ContactForm = () => {
     const classes = useStyles()
     return(
-        <Box className={classes.contactInfo}>
+        <Box className={classes.contactForm}>
             <Typography style={{color: '#fff', marginBottom: "2rem", fontWeight: 'bolder', fontSize: '1.2rem'}} variant="h6">Contact Info</Typography>
-            <Box className={classes.contactInfoWrapper}>
-                <Box className={classes.contactInfoItem}>
+            <Box className={classes.contactFormWrapper}>
+                <Box className={classes.contactFormItem}>
                     <EmailIcon style={{color: '#fff', fontSize: '2rem'}}></EmailIcon>
                     <Typography style={{color: '#fff', fontWeight: 'bold', fontSize: '1.2rem'}} variant="subtitle1">Email</Typography>
                     <Typography style={{color: '#fff'}} variant="body1">me.juanponce@gmail.com</Typography>
                 </Box>
-                <Box className={classes.contactInfoItem}>
+                <Box className={classes.contactFormItem}>
                     <LocationOnIcon style={{color: '#fff', fontSize: '2rem'}}></LocationOnIcon>
                     <Typography style={{color: '#fff', fontWeight: 'bold', fontSize: '1.2rem'}} variant="subtitle1">Address</Typography>
                     <Typography style={{color: '#fff'}} variant="body1">Guadalajara, México</Typography>
                 </Box>
-                <Box className={classes.contactInfoItem}>
+                <Box className={classes.contactFormItem}>
                     <WorkIcon style={{color: '#fff', fontSize: '2rem'}}></WorkIcon>
                     <Typography style={{color: '#fff', fontWeight: 'bold', fontSize: '1.2rem'}} variant="subtitle1">Freelance</Typography>
                     <Typography style={{color: '#fff'}} variant="body1">I am available for Freelance hire</Typography>
@@ -59,4 +59,4 @@ const ContactInfo = () => {
     )
 }
 
-export default ContactInfo
+export default ContactForm
