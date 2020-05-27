@@ -1,23 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "70221dd776574f2789e182a88f777e40",
+    "revision": "52c9bc0159148f80b07aa1a8fd743370",
     "url": "/index.html"
   },
   {
-    "revision": "701dbfc90bd4003e72c4",
-    "url": "/static/js/2.8f4b890d.chunk.js"
+    "revision": "1e308d856db304013f56",
+    "url": "/static/js/2.937cd253.chunk.js"
   },
   {
     "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/static/js/2.8f4b890d.chunk.js.LICENSE.txt"
+    "url": "/static/js/2.937cd253.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3f5a0b908f6e7598604d",
-    "url": "/static/js/main.018eddb4.chunk.js"
+    "revision": "e33c2d54b491ccf9afbd",
+    "url": "/static/js/main.6cea5637.chunk.js"
   },
   {
     "revision": "0900b8459eff7f341ab9",
     "url": "/static/js/runtime-main.9d604abd.js"
+  },
+  {
+    "revision": "1c78edcf85066f4af20a0602313c1c90",
+    "url": "/static/media/amd-automation-project.1c78edcf.png"
   },
   {
     "revision": "efe0ad9bf721fe7a22e195461d1d4e03",
