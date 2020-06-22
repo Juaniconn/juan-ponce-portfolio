@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Box, makeStyles, Typography, FormControl, InputLabel, Input, TextareaAutosize, Button } from '@material-ui/core'
+import Axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
     contactInfo: {
@@ -70,30 +71,96 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const ContactInfo = () => {
+const ContactInfo = (props) => {
     const classes = useStyles()
     return(
-        <Box className={classes.contactInfo}>
-            <Typography style={{color: '#fff', marginBottom: "2rem", fontWeight: 'bolder', fontSize: '1.2rem'}} variant="h6">Contact Form</Typography>
-            <Box className={classes.contactInfoWrapper}>
-                <FormControl className={classes.contactInfoItem}>
-                    <InputLabel style={{color: '#808787'}} htmlFor="name">Name</InputLabel>
-                    <Input className={classes.contactInfoInput} id="name" aria-describedby="my-helper-text" />
-                </FormControl>
-                <FormControl className={classes.contactInfoItem}>
-                    <InputLabel style={{color: '#808787'}} htmlFor="email">Email address</InputLabel>
-                    <Input className={classes.contactInfoInput} id="email" aria-describedby="my-helper-text" />
-                </FormControl>
-                <FormControl className={classes.contactInfoItem}>
-                    <TextareaAutosize className={classes.contactInfoInput} rowsMin={10} id="message" aria-label="empty textarea" placeholder="Message" />
-                </FormControl>
-                <FormControl className={classes.contactFormButtonWrapper}>
-                    <Button className={classes.contactFormButtonItem} variant="contained" disabled>Send Message</Button>
-                    <Typography variant="overline" style={{color: "#56D8B7", textAlign: "center"}}>Not Available</Typography>
-                </FormControl>
+        <>
+            {/* {console.log(props.state)} */}
+            <Box className={classes.contactInfo}>
+                <Typography style={{color: '#fff', marginBottom: "2rem", fontWeight: 'bolder', fontSize: '1.2rem'}} variant="h6">Contact Form</Typography>
+                <form onSubmit={props.handleSubmit} className={classes.contactInfoWrapper}>
+                    <FormControl className={classes.contactInfoItem}>
+                        <InputLabel style={{color: '#808787'}} htmlFor="full-name">Name</InputLabel>
+                        <Input name="name" type="text" className={classes.contactInfoInput} id="full-name" aria-describedby="my-helper-text" value={props.state.name} onChange={props.handleChange} />
+                    </FormControl>
+                    <FormControl className={classes.contactInfoItem}>
+                        <InputLabel style={{color: '#808787'}} htmlFor="email">Email address</InputLabel>
+                        <Input name="email" type="email" className={classes.contactInfoInput} id="email"  aria-describedby="my-helper-text" value={props.state.email} onChange={props.handleChange} />
+                    </FormControl>
+                    <FormControl className={classes.contactInfoItem}>
+                        <TextareaAutosize name="message" type="textarea" className={classes.contactInfoInput} rowsMin={10} id="message" aria-label="empty textarea" placeholder="Message" value={props.state.message} onChange={props.handleChange} />
+                    </FormControl>
+                    <FormControl className={classes.contactFormButtonWrapper}>
+                        <Button className={classes.contactFormButtonItem} type="submit" variant="contained" disabled={props.state.disabled}>Send Message</Button>
+                        {props.state.emailSent === true && <Typography variant="overline" style={{color: "#56D8B7", textAlign: "center"}}>Correo enviado</Typography>}
+                        {props.state.emailSent === false && <Typography variant="overline" style={{color: "#56D8B7", textAlign: "center"}}>Correo no enviado</Typography>}
+                    </FormControl>
+                </form>
             </Box>
-        </Box>
+        </>
     )
 }
 
-export default ContactInfo
+class ContactSection extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            name: '',
+            email: '',
+            message: '',
+            disabled: false,
+            emailSent: null,
+        }
+    }
+
+    handleChange = (event) => {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+        
+        this.setState({
+            [name]: value
+        })
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+
+        console.log(event.target);
+
+        this.setState({
+            disabled: true
+        });
+
+        Axios.post('/api/email', this.state)
+            .then(res => {
+                if(res.data.success) {
+                    this.setState({
+                        disabled: false,
+                        emailSent: true
+                    });
+                } else {
+                    this.setState({
+                        disabled: false,
+                        emailSent: false
+                    });
+                }
+            })
+            .catch(err => {
+                console.log(err);
+
+                this.setState({
+                    disabled: false,
+                    emailSent: false
+                });
+            })
+    }
+
+    render(){
+        return(
+            <ContactInfo state={this.state} handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
+        )
+    }
+}
+
+export default ContactSection
