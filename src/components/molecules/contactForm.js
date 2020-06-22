@@ -91,9 +91,9 @@ const ContactInfo = (props) => {
                         <TextareaAutosize name="message" type="textarea" className={classes.contactInfoInput} rowsMin={10} id="message" aria-label="empty textarea" placeholder="Message" value={props.state.message} onChange={props.handleChange} />
                     </FormControl>
                     <FormControl className={classes.contactFormButtonWrapper}>
-                        <Button className={classes.contactFormButtonItem} type="submit" variant="contained" disabled={props.state.disabled}>Send Message</Button>
+                        <Button className={classes.contactFormButtonItem} type="submit" variant="contained" disabled={true}>Send Message</Button>
                         {props.state.emailSent === true && <Typography variant="overline" style={{color: "#56D8B7", textAlign: "center"}}>Correo enviado</Typography>}
-                        {props.state.emailSent === false && <Typography variant="overline" style={{color: "#56D8B7", textAlign: "center"}}>Correo no enviado</Typography>}
+                        <Typography variant="overline" style={{color: "#56D8B7", textAlign: "center"}}>NOT AVAILABLE</Typography>
                     </FormControl>
                 </form>
             </Box>
